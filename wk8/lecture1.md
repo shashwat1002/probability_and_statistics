@@ -87,11 +87,36 @@ $$
 Theorem: 
 
 $$
-\text{Var}(\alpha X) = \alpha^2 \text{Vanr}(X)
+\text{Var}(\alpha X) = \alpha^2 \text{Var}(X)
+$$
+
+Proof: 
+
+$$
+\begin{aligned}
+    \text{Var}(\alpha X) &= E[\alpha ^2 X^2] - E[\alpha X]^2 \\
+    & \text{ as expectation is linear, we have } \\
+    &= \alpha ^2 E[X^2] + (\alpha E[X])^2 \\
+    &= \alpha ^2 E[X^2] + \alpha ^2 E[X]^2 \\
+    &= \alpha ^2 (E[X^2] + E[X] ^2) \\
+    &= \alpha ^2 (\text{Var[X]})
+\end{aligned}
 $$
 
 $$
-Var(X+\alpha) - Var(X)
+Var(X+\alpha) = Var(X)
+$$
+
+Proof: 
+
+$$
+\begin{aligned}
+    \text{Var}(X + \alpha) &= E[(X + \alpha)^2] - E[X+ \alpha]^2 \\
+    &= E[X^2 + \alpha^2 + 2 \alpha X] - (E[X] + \alpha)^2 \\
+    &= E[X^2] + \alpha ^2 + 2 \alpha E[X] - (E[X])^2 - \alpha ^2 - 2 \alpha E[X] \\
+    &= E[X^2] - (E[X])^2 \\
+    &= \text{Var}[X]
+\end{aligned}
 $$
 
 # Higher order moments and moment generating function 
