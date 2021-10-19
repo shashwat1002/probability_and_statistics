@@ -119,6 +119,92 @@ $$
 \end{aligned}
 $$
 
+Theorem: 
+
+for the _independent variables_ $X_1, X_2 \dots X_n$ we have that 
+
+$$
+\text{Var}[X_1 + X_2 + \dots X_n] = \sum _{i=1} ^n \text{Var}[X_i]
+$$
+
+Proof: 
+
+We'll prove this be induction 
+
+Base case: $n=2$
+
+we need to prove 
+
+$$
+\text{Var}[X_1 + X_2] = \text{Var}[X_1] + \text{Var}[X_2]
+$$
+
+LHS: 
+
+$$
+\begin{aligned}
+    \text{Var}[X_1 + X_2] &= E[(X_1 + X_2)^2] - (E[X_1 + X_2])^2 \\
+    &= E[X _1 ^2] + E{X _2 ^2} + 2E[X_1 X_2] - (E[X_1])^2 - (E[X_2])^2 - 2 E[X _1] E[X_2]
+\end{aligned}
+$$
+
+We take a detour and consider $E[X_1 X_2]$
+
+By definition of expectation we have 
+
+$$
+\begin{aligned}
+    E[X_1 X_2] &= \sum _{\forall x_1}{\forall x_2} (x_1 x_2) P(X_1 = x_1 \cap X_2 = x_2) \\
+    & \text{Since the variables are independent, we have } \\
+    &= \sum _{\forall x_1}{\forall x_2} (x_1) P(X_1 = x_1) (x_2 )  P(X_2 = x_2) \\
+    &= \sum _{\forall x_1} \Bigg( x_1 P(x_1) \Big(\sum _{\forall x_2} x_2 P(x_2) \Big) \Bigg) \\
+    &= \sum _{\forall x_1} \Bigg( x_1 P(x_1) E[X_2] \Bigg) \\
+    &= E[X_1]E[X_2]
+\end{aligned}
+$$
+
+We substitute this to where we left the proof 
+
+$$
+\begin{aligned}
+    \text{Var}[X_1 + X_2] &= E[X _1 ^2] + E{X _2 ^2} + 2E[X_1 X_2] - (E[X_1])^2 - (E[X_2])^2 - 2 E[X _1] E[X_2] \\
+    &= E[X _1 ^2] + E{X _2 ^2} + 2E[X_1] E[X_2] - (E[X_1])^2 - (E[X_2])^2 - 2 E[X _1] E[X_2] \\
+    &= E[X _1 ^2] - (E[X_1])^2 + E[X _2 ^2] - (E[X_2 ^2]) \\
+    &= \text{Var}[X_1] + \text{Var}[X_1]
+\end{aligned}
+$$
+
+Base case proved.
+
+Induction hypothesis: 
+
+For an arbitrary $k > 2$
+
+$$
+\text{Var} [\sum _{i=2} ^k X_i] = \sum _{i=2} ^k \text{Var}[X_i]
+$$
+
+Such that all $X_1, X_2 \dots X_k$ are all independent events. 
+
+We need to prove that $\text{Var}[\sum _{i=1} ^{k+1} X_i] = \sum _{i=1} ^{k+1} \text{Var}[X_i]$
+
+given that $X_1 \dots X_{k+1}$ are independent random variables, therefore we can say that $X_1 + \dots + X_k, X_{k+1}$ are also independent and thus, we have: 
+
+$$
+\begin{aligned}
+    \text{Var}[\sum _{i=1} ^{k+1} X_i] &= \text{Var}[\sum _{i=1} ^k X_i + X_{k+1}] \\
+    & \text{ and by base case, we have } \\
+    &= \text{Var}[\sum _{i=1} ^k X_i] + \text{Var}[X_{k+1}] \\
+    & \text{ using the induction hypothesis, we get } \\
+    &= \sum _{i=1} ^k \text{Var}[X_i] + X_{k+1} \\
+    &= \sum _{i=1} ^{k+1} \text{Var}[X_i]
+\end{aligned}
+$$
+
+Hence proved 
+
+
+
 # Higher order moments and moment generating function 
 
 Defined as 
